@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Gafotas\Utility;
 
 class Notifier
@@ -16,7 +16,7 @@ class Notifier
             } else if (is_null($message)) {
                 echo "<p>null</p>";
             } else {
-                echo "<pre>$message</pre>";
+                echo "<p>$message</p>";
             }
         }
         echo '</div>';
@@ -24,7 +24,7 @@ class Notifier
 
     public static function maybe_init()
     {
-        if(!self::$init) {
+        if (!self::$init) {
             add_action('admin_notices', [get_class(), 'output']);
             self::$init = true;
         }
