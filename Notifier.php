@@ -1,6 +1,7 @@
 <?php 
+namespace Gafotas\Utility;
 
-class Console
+class Notifier
 {
     private static $messages = [];
 
@@ -24,7 +25,7 @@ class Console
         add_action('admin_notices', [get_class(), 'output']);
     }
 
-    public static function log($message = null)
+    public static function push($message = null)
     {
         self::$messages[] = $message;
     }
