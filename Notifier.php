@@ -9,6 +9,9 @@ class Notifier
 
     public static function output()
     {
+        if (empty(self::$messages)) {
+            return;
+        }
         echo '<div class="notice">';
         foreach (self::$messages as $key => $message) {
             if (is_array($message) || is_object($message)) {
