@@ -5,6 +5,8 @@ class Notifier
 {
     private static $messages = [];
 
+    private static $init = false;
+
     public static function output()
     {
         echo '<div class="notice">';
@@ -20,13 +22,17 @@ class Notifier
         echo '</div>';
     }
 
-    public static function init()
+    public static function maybe_init()
     {
-        add_action('admin_notices', [get_class(), 'output']);
+        if(!self::$init) {
+            add_action('admin_notices', [get_class(), 'output']);
+            self::$init = true;
+        }
     }
 
     public static function push($message = null)
     {
+        self::maybe_init();
         self::$messages[] = $message;
     }
 }
